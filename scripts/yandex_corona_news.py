@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 
 
 class Scraper:
-
     def __init__(self, site):
         self.site = site
 
@@ -23,11 +22,19 @@ class Scraper:
             if "/news/story/" in url:
                 url = urlunsplit(urlsplit(url)._replace(query=""))
                 url_list.append(base_url + url)
-        for url in list(dict.fromkeys(url_list)):
+        url_list = list(dict.fromkeys(url_list))
+        for url in url_list:
             print(url)
+        return url_list
+
+    def save_to_file(self):
+        url_list = Scraper.scrape(self)
+        new_file = open("file.txt", "a")
+        for url in url_list:
+            new_file.write(url + "\n")
+        new_file.close()
 
 
 base_url = "https://yandex.ru"
 coronovirus_news = "https://yandex.ru/news/rubric/koronavirus"
-Scraper(coronovirus_news).scrape()
-
+Scraper(coronovirus_news).save_to_file()
