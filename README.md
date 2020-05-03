@@ -11,4 +11,4 @@ Launches a Yandex.Maps in the browser using an address from the command line or 
 Displays and saves coronavirus news links from the Yandex.News source to a file in workdir.
 
 **How to use on macOS:** 
-- `chmod +x mapit.py && ./yandex_corona_news.py`
+- `chmod +x yandex_corona_news.py && ./yandex_corona_news.py`
